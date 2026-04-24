@@ -1,5 +1,5 @@
 import heroBlob from "@/assets/hero-blob.jpg";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, MapPin } from "lucide-react";
 
 const Hero = () => {
   return (
@@ -36,9 +36,15 @@ const Hero = () => {
 
       <div className="container relative z-10 grid lg:grid-cols-12 gap-12 items-center">
         <div className="lg:col-span-7 animate-fade-in">
-          <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground mb-8">
-            <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_10px_hsl(var(--neon))]" />
-            Premium Creative Studio
+          <div className="flex flex-wrap items-center gap-3 mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full glass-card px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="h-1.5 w-1.5 rounded-full bg-neon shadow-[0_0_10px_hsl(var(--neon))]" />
+              Premium Creative Studio
+            </div>
+            <div className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+              <MapPin className="h-3 w-3 text-primary" />
+              Bhuj, India
+            </div>
           </div>
 
           <h1 className="font-display font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-[5.5rem] leading-[1.02] tracking-tight">
@@ -54,20 +60,20 @@ const Hero = () => {
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
-              href="#work"
+              href="#contact"
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-4 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-[1.03]"
             >
-              View Work
+              Start a Project
               <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
             </a>
             <a
-              href="#contact"
+              href="#work"
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 backdrop-blur px-7 py-4 text-sm font-medium hover:border-primary/50 hover:bg-surface transition-all duration-500"
             >
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-brand">
                 <Play className="h-3 w-3 fill-primary-foreground text-primary-foreground" />
               </span>
-              Contact Us
+              View Work
             </a>
           </div>
 

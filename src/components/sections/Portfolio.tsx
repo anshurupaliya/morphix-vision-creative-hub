@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 import logoRoyalBlush from "@/assets/portfolio/logo-royal-blush.jpg";
@@ -22,17 +24,26 @@ import printBrochure from "@/assets/portfolio/print-brochure.jpg";
 
 type Cat = "All" | "Logo" | "Social" | "Video" | "Print";
 
-const items: { src: string; title: string; client: string; cat: Cat; tall?: boolean }[] = [
+type Item = {
+  src: string;
+  title: string;
+  client: string;
+  cat: Cat;
+  tall?: boolean;
+  caseStudy?: string;
+};
+
+const items: Item[] = [
   { src: logoRoyalBlush, title: "Royal Blush", client: "Identity & Logo", cat: "Logo", tall: true },
-  { src: socialEndeavour, title: "Manali · Leh · Srinagar", client: "Endeavour Ladakh", cat: "Social" },
-  { src: videoPhysio, title: "7 Benefits of Physiotherapy", client: "Swasthya Clinic", cat: "Video" },
+  { src: socialEndeavour, title: "Manali · Leh · Srinagar", client: "Endeavour Ladakh", cat: "Social", caseStudy: "endeavour-ladakh" },
+  { src: videoPhysio, title: "7 Benefits of Physiotherapy", client: "Swasthya Clinic", cat: "Video", caseStudy: "swasthya-physiotherapy" },
   { src: printRudraj, title: "Business Card System", client: "Rudraj Immigration", cat: "Print", tall: true },
-  { src: socialHulk, title: "Muscle 8 Iso Hydro", client: "Hulk Nutrition", cat: "Social" },
+  { src: socialHulk, title: "Muscle 8 Iso Hydro", client: "Hulk Nutrition", cat: "Social", caseStudy: "hulk-nutrition" },
   { src: logoSis, title: "SIS Brand Mug", client: "Brand Identity", cat: "Logo" },
   { src: videoBridal, title: "Bridal Wedding Lehenga", client: "Saree Collection", cat: "Video" },
   { src: logoEhouse, title: "e — House Mark", client: "Real Estate Logo", cat: "Logo" },
-  { src: socialHulkPost, title: "Nutrition Facts Carousel", client: "Hulk Nutrition", cat: "Social", tall: true },
-  { src: videoWomen, title: "8 Factors · Women Health", client: "Wellness Reel", cat: "Video" },
+  { src: socialHulkPost, title: "Nutrition Facts Carousel", client: "Hulk Nutrition", cat: "Social", tall: true, caseStudy: "hulk-nutrition" },
+  { src: videoWomen, title: "8 Factors · Women Health", client: "Wellness Reel", cat: "Video", caseStudy: "swasthya-physiotherapy" },
   { src: printBrochure, title: "Hazardous Waste Brochure", client: "The Leela Corporation", cat: "Print" },
   { src: logoEnvy, title: "Envy Designs", client: "Architecture Logo", cat: "Logo" },
   { src: logoRadhe, title: "Radhe Jewellery", client: "Jewellery Branding", cat: "Logo" },
@@ -79,27 +90,24 @@ const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 [grid-auto-flow:dense]">
-          {filtered.map((item, i) => (
-            <Reveal
-              key={`${item.title}-${item.client}`}
-              delay={Math.min(i * 50, 400)}
-              className={item.tall ? "sm:row-span-2" : ""}
-            >
-              <a
-                href="#contact"
-                className={`group relative block overflow-hidden rounded-3xl border border-border bg-surface ${
-                  item.tall ? "h-full min-h-[34rem]" : "h-80"
-                }`}
-              >
+          {filtered.map((item, i) => {
+            const content = (
+              <>
                 <img
                   src={item.src}
                   alt={`${item.title} — ${item.client}`}
                   loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                 />
-                {/* Gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-500" />
                 <div className="absolute inset-0 bg-gradient-brand opacity-0 group-hover:opacity-20 mix-blend-overlay transition-opacity duration-500" />
+
+                {item.caseStudy && (
+                  <div className="absolute top-4 right-4 inline-flex items-center gap-1 text-[10px] uppercase tracking-[0.25em] px-3 py-1.5 rounded-full bg-gradient-brand text-primary-foreground shadow-glow-soft">
+                    Case Study
+                    <ArrowUpRight className="h-3 w-3" />
+                  </div>
+                )}
 
                 <div className="absolute inset-0 p-6 flex flex-col justify-end">
                   <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-primary mb-2">
@@ -113,12 +121,34 @@ const Portfolio = () => {
                     {item.client}
                   </div>
                   <div className="mt-3 inline-flex items-center gap-2 text-xs text-foreground opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                    View case study →
+                    {item.caseStudy ? "Read case study →" : "Start a similar project →"}
                   </div>
                 </div>
-              </a>
-            </Reveal>
-          ))}
+              </>
+            );
+
+            const cls = `group relative block overflow-hidden rounded-3xl border border-border bg-surface ${
+              item.tall ? "h-full min-h-[34rem]" : "h-80"
+            }`;
+
+            return (
+              <Reveal
+                key={`${item.title}-${item.client}-${i}`}
+                delay={Math.min(i * 50, 400)}
+                className={item.tall ? "sm:row-span-2" : ""}
+              >
+                {item.caseStudy ? (
+                  <Link to={`/case-study/${item.caseStudy}`} className={cls}>
+                    {content}
+                  </Link>
+                ) : (
+                  <a href="#contact" className={cls}>
+                    {content}
+                  </a>
+                )}
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

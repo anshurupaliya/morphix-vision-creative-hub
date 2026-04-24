@@ -1,24 +1,33 @@
 import { Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import endeavour from "@/assets/clients/endeavour.jpg";
+import escapades from "@/assets/clients/escapades.jpg";
+import swasthya from "@/assets/clients/swasthya.jpg";
 
 const items = [
   {
     quote:
-      "Manish transformed our entire visual identity. Our engagement tripled within two months of the rebrand.",
-    name: "Travel Brand Founder",
+      "The creative for our Manali–Leh–Srinagar circuit tour was a scroll-stopper. Inquiries jumped within days of posting.",
+    name: "Team",
     role: "Endeavour Ladakh",
+    project: "Social + Story Ads",
+    logo: endeavour,
   },
   {
     quote:
-      "The video ads Morphix Vision created out-performed everything we'd done before. Crisp, premium, on-brand.",
-    name: "Marketing Lead",
-    role: "Hulk Nutrition",
+      "Our explainer reels — 7 Benefits of Physiotherapy, 8 Factors Women's Health — genuinely changed how patients find us. Crisp, clinical, shareable.",
+    name: "Clinic Lead",
+    role: "Swasthya Physiotherapy",
+    project: "Video Content",
+    logo: swasthya,
   },
   {
     quote:
-      "Pixel-perfect, deadline-perfect. Working with Manish feels like having an in-house creative director.",
-    name: "Co-founder",
-    role: "Rudraj Immigration",
+      "Pixel-perfect, deadline-perfect. Our ride-book creatives and bike-trip story ads look premium next to the best in the travel space.",
+    name: "Founder",
+    role: "Escapades The Rebellion",
+    project: "Social + Story Ads",
+    logo: escapades,
   },
 ];
 
@@ -39,16 +48,26 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-5">
           {items.map((t, i) => (
-            <Reveal key={t.name} delay={i * 100}>
-              <figure className="glass-card glow-border h-full rounded-3xl p-7 hover:bg-surface/80 transition-all duration-500">
+            <Reveal key={t.role} delay={i * 100}>
+              <figure className="glass-card glow-border h-full rounded-3xl p-7 hover:bg-surface/80 transition-all duration-500 flex flex-col">
                 <Quote className="h-8 w-8 text-primary/60 mb-5" />
-                <blockquote className="text-base leading-relaxed">
+                <blockquote className="text-base leading-relaxed flex-1">
                   "{t.quote}"
                 </blockquote>
-                <figcaption className="mt-6 pt-6 border-t border-border">
-                  <div className="font-display font-semibold">{t.name}</div>
-                  <div className="text-xs uppercase tracking-wider text-muted-foreground mt-1">
-                    {t.role}
+                <figcaption className="mt-6 pt-6 border-t border-border flex items-center gap-4">
+                  <div className="h-12 w-12 shrink-0 rounded-xl bg-background/80 border border-border p-2 flex items-center justify-center">
+                    <img
+                      src={t.logo}
+                      alt={`${t.role} logo`}
+                      loading="lazy"
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                  <div className="min-w-0">
+                    <div className="font-display font-semibold truncate">{t.role}</div>
+                    <div className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
+                      {t.name} · {t.project}
+                    </div>
                   </div>
                 </figcaption>
               </figure>

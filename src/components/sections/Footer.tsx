@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Youtube, Mail } from "lucide-react";
+import { Instagram, Linkedin, Youtube, Mail, MessageCircle, MapPin } from "lucide-react";
 import logo from "@/assets/morphix-logo-dark.png";
 
 const Footer = () => {
@@ -12,6 +12,10 @@ const Footer = () => {
               We design experiences that convert. Branding, social, video & print
               — premium, on time, on brand.
             </p>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <MapPin className="h-3.5 w-3.5 text-primary" />
+              Bhuj, Gujarat · India
+            </div>
           </div>
 
           <div>
@@ -36,6 +40,7 @@ const Footer = () => {
             <div className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Connect</div>
             <div className="flex gap-3">
               {[
+                { Icon: MessageCircle, href: "https://wa.me/917359740765" },
                 { Icon: Instagram, href: "https://www.instagram.com/morphixvision?igsh=bDRpNW1xMnZobnJs" },
                 { Icon: Linkedin, href: "#" },
                 { Icon: Youtube, href: "https://youtube.com/@morphixvision?si=Wb2qP0fZoKvvbR8O" },
