@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Morphix Vision — Creative Hub
 
 TODO: Document your project here
