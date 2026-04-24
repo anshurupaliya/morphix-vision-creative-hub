@@ -1,0 +1,47 @@
+import { useEffect, useRef } from "react";
+
+/** Wraps children with an IntersectionObserver-driven reveal animation. */
+const Reveal = ({
+  children,
+  delay = 0,
+  className = "",
+  as: Tag = "div",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+  as?: keyof JSX.IntrinsicElements;
+}) => {
+  const ref = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+
+  const Component = Tag as any;
+  return (
+    <Component
+      ref={ref as any}
+      className={`reveal ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </Component>
+  );
+};
+
+export default Reveal;
