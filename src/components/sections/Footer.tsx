@@ -1,7 +1,18 @@
 import { Instagram, Linkedin, Youtube, Mail, MessageCircle, MapPin } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import logo from "@/assets/morphix-logo-dark.png";
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const go = (e: React.MouseEvent, target: string) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate("/", { state: { scrollTo: target } });
+    }
+  };
   return (
     <footer className="relative border-t border-border bg-surface/40 py-16">
       <div className="container">
@@ -22,13 +33,17 @@ const Footer = () => {
             <div className="text-xs uppercase tracking-[0.25em] text-primary mb-4">Explore</div>
             <ul className="space-y-2 text-sm">
               {[
-                { l: "Work", h: "#work" },
-                { l: "About", h: "#about" },
-                { l: "Services", h: "#services" },
-                { l: "Contact", h: "#contact" },
+                { l: "Work", t: "work" },
+                { l: "About", t: "about" },
+                { l: "Services", t: "services" },
+                { l: "Contact", t: "contact" },
               ].map((i) => (
-                <li key={i.h}>
-                  <a href={i.h} className="text-muted-foreground hover:text-foreground transition-colors">
+                <li key={i.t}>
+                  <a
+                    href={`/#/?to=${i.t}`}
+                    onClick={(e) => go(e, i.t)}
+                    className="text-muted-foreground hover:text-foreground transition-colors"
+                  >
                     {i.l}
                   </a>
                 </li>

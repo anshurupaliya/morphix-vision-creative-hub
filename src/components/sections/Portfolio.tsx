@@ -142,7 +142,14 @@ const Portfolio = () => {
                     {content}
                   </Link>
                 ) : (
-                  <a href="#contact" className={cls}>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className={cls}
+                  >
                     {content}
                   </a>
                 )}

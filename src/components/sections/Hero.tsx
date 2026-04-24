@@ -61,6 +61,10 @@ const Hero = () => {
           <div className="mt-10 flex flex-wrap items-center gap-4">
             <a
               href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand px-7 py-4 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-[1.03]"
             >
               Start a Project
@@ -68,6 +72,10 @@ const Hero = () => {
             </a>
             <a
               href="#work"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById("work")?.scrollIntoView({ behavior: "smooth" });
+              }}
               className="group inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 backdrop-blur px-7 py-4 text-sm font-medium hover:border-primary/50 hover:bg-surface transition-all duration-500"
             >
               <span className="flex h-6 w-6 items-center justify-center rounded-full bg-gradient-brand">

@@ -269,7 +269,8 @@ const CaseStudy = () => {
                       WhatsApp Us
                     </a>
                     <Link
-                      to="/#contact"
+                      to="/"
+                      state={{ scrollTo: "contact" }}
                       className="group inline-flex items-center gap-2 rounded-full bg-gradient-brand px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all"
                     >
                       Start a Project
