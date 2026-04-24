@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "@/assets/morphix-logo.png";
+import logo from "@/assets/morphix-logo-dark.png";
 
 const links = [
   { href: "#work", label: "Work" },

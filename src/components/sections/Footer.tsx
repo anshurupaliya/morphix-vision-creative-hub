@@ -1,5 +1,5 @@
 import { Instagram, Linkedin, Youtube, Mail } from "lucide-react";
-import logo from "@/assets/morphix-logo.png";
+import logo from "@/assets/morphix-logo-dark.png";
 
 const Footer = () => {
   return (
