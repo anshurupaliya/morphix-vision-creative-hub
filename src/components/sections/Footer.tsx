@@ -65,9 +65,10 @@ const Footer = () => {
                   key={i}
                   href={href}
                   aria-label="social link"
-                  className="h-10 w-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary-foreground hover:bg-gradient-brand hover:border-transparent transition-all duration-500"
+                  className="group h-10 w-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-primary-foreground hover:bg-gradient-brand hover:border-transparent hover:shadow-glow-soft hover:-translate-y-1 hover:scale-110 transition-all duration-500"
+                  style={{ transitionDelay: `${i * 30}ms` }}
                 >
-                  <Icon className="h-4 w-4" />
+                  <Icon className="h-4 w-4 transition-transform duration-500 group-hover:rotate-12" />
                 </a>
               ))}
             </div>

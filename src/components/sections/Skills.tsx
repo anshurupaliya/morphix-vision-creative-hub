@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 
 const skills = [
   { name: "Graphic Design", value: 95 },
@@ -31,15 +32,25 @@ const SkillBar = ({ name, value }: { name: string; value: number }) => {
   }, []);
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="group">
       <div className="flex items-baseline justify-between mb-3">
-        <span className="font-display text-lg font-medium">{name}</span>
-        <span className="text-sm text-primary font-mono">{value}%</span>
+        <span className="font-display text-lg font-medium transition-colors duration-300 group-hover:text-primary">
+          {name}
+        </span>
+        <span className="text-sm text-primary font-mono">
+          <CountUp end={value} suffix="%" duration={1600} />
+        </span>
       </div>
       <div className="relative h-1.5 rounded-full bg-surface-elevated overflow-hidden">
         <div
-          className="absolute inset-y-0 left-0 bg-gradient-brand rounded-full transition-[width] duration-[1600ms] ease-out shadow-[0_0_20px_hsl(var(--primary)/0.6)]"
-          style={{ width: active ? `${value}%` : "0%" }}
+          className="absolute inset-y-0 left-0 rounded-full transition-[width] duration-[1600ms] ease-out shadow-[0_0_20px_hsl(var(--primary)/0.6)]"
+          style={{
+            width: active ? `${value}%` : "0%",
+            background:
+              "linear-gradient(90deg, hsl(24 100% 50%), hsl(36 100% 60%), hsl(14 100% 50%), hsl(24 100% 50%))",
+            backgroundSize: "200% 100%",
+            animation: active ? "text-shimmer 4s linear infinite" : undefined,
+          }}
         />
       </div>
     </div>
@@ -51,7 +62,8 @@ const Skills = () => {
     <section className="relative py-32 overflow-hidden">
       <div
         aria-hidden
-        className="absolute top-1/3 right-0 w-[30rem] h-[30rem] rounded-full bg-primary-glow/15 blur-[120px]"
+        className="absolute top-1/3 right-0 w-[30rem] h-[30rem] rounded-full bg-primary-glow/15 blur-[120px] blob-float"
+        style={{ animationDelay: "-4s" }}
       />
 
       <div className="container grid lg:grid-cols-12 gap-16">

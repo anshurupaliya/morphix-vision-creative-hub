@@ -1,5 +1,6 @@
 import { Quote } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
 import endeavour from "@/assets/clients/endeavour.jpg";
 import escapades from "@/assets/clients/escapades.jpg";
 import swasthya from "@/assets/clients/swasthya.jpg";
@@ -48,29 +49,31 @@ const Testimonials = () => {
 
         <div className="grid md:grid-cols-3 gap-5">
           {items.map((t, i) => (
-            <Reveal key={t.role} delay={i * 100}>
-              <figure className="glass-card glow-border h-full rounded-3xl p-7 hover:bg-surface/80 transition-all duration-500 flex flex-col">
-                <Quote className="h-8 w-8 text-primary/60 mb-5" />
-                <blockquote className="text-base leading-relaxed flex-1">
-                  "{t.quote}"
-                </blockquote>
-                <figcaption className="mt-6 pt-6 border-t border-border flex items-center gap-4">
-                  <div className="h-12 w-12 shrink-0 rounded-xl bg-background/80 border border-border p-2 flex items-center justify-center">
-                    <img
-                      src={t.logo}
-                      alt={`${t.role} logo`}
-                      loading="lazy"
-                      className="max-h-full max-w-full object-contain"
-                    />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="font-display font-semibold truncate">{t.role}</div>
-                    <div className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
-                      {t.name} · {t.project}
+            <Reveal key={t.role} delay={i * 100} direction={i === 1 ? "up" : i === 0 ? "left" : "right"}>
+              <TiltCard intensity={5} lift={6} className="h-full">
+                <figure className="group glass-card glow-border shine h-full rounded-3xl p-7 hover:bg-surface/80 transition-colors duration-500 flex flex-col">
+                  <Quote className="h-8 w-8 text-primary/60 mb-5 transition-all duration-500 group-hover:text-primary group-hover:scale-110 group-hover:-rotate-6" />
+                  <blockquote className="text-base leading-relaxed flex-1">
+                    "{t.quote}"
+                  </blockquote>
+                  <figcaption className="mt-6 pt-6 border-t border-border flex items-center gap-4">
+                    <div className="h-12 w-12 shrink-0 rounded-xl bg-background/80 border border-border p-2 flex items-center justify-center transition-colors duration-500 group-hover:border-primary/40">
+                      <img
+                        src={t.logo}
+                        alt={`${t.role} logo`}
+                        loading="lazy"
+                        className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-110"
+                      />
                     </div>
-                  </div>
-                </figcaption>
-              </figure>
+                    <div className="min-w-0">
+                      <div className="font-display font-semibold truncate">{t.role}</div>
+                      <div className="text-xs uppercase tracking-wider text-muted-foreground mt-0.5">
+                        {t.name} · {t.project}
+                      </div>
+                    </div>
+                  </figcaption>
+                </figure>
+              </TiltCard>
             </Reveal>
           ))}
         </div>

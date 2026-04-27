@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import CountUp from "@/components/CountUp";
 import endeavour from "@/assets/clients/endeavour.jpg";
 import swasthya from "@/assets/clients/swasthya.jpg";
 import rab from "@/assets/clients/rab.jpg";
@@ -67,13 +68,18 @@ const Clients = () => {
         <Reveal delay={150}>
           <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-px bg-border rounded-3xl overflow-hidden border border-border">
             {[
-              { k: "11+", v: "Brands" },
-              { k: "100+", v: "Projects" },
-              { k: "60K+", v: "Followers Reached" },
-              { k: "100%", v: "On-time Delivery" },
+              { end: 11, suffix: "+", v: "Brands" },
+              { end: 100, suffix: "+", v: "Projects" },
+              { end: 60, suffix: "K+", v: "Followers Reached" },
+              { end: 100, suffix: "%", v: "On-time Delivery" },
             ].map((s) => (
-              <div key={s.v} className="bg-surface/80 backdrop-blur p-8 text-center">
-                <div className="font-display text-3xl md:text-4xl font-bold text-gradient-brand">{s.k}</div>
+              <div
+                key={s.v}
+                className="group bg-surface/80 backdrop-blur p-8 text-center transition-colors duration-500 hover:bg-surface"
+              >
+                <div className="font-display text-3xl md:text-4xl font-bold text-gradient-brand transition-transform duration-500 group-hover:scale-110 inline-block">
+                  <CountUp end={s.end} suffix={s.suffix} />
+                </div>
                 <div className="mt-2 text-xs uppercase tracking-widest text-muted-foreground">{s.v}</div>
               </div>
             ))}

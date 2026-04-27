@@ -1,5 +1,6 @@
 import { Palette, Share2, Film, Printer, ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import TiltCard from "@/components/TiltCard";
 
 const services = [
   {
@@ -60,46 +61,48 @@ const Services = () => {
           {services.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Reveal key={s.title} delay={i * 80}>
-                <article className="group glow-border relative h-full rounded-3xl bg-surface/60 backdrop-blur p-7 border border-border hover:bg-surface transition-all duration-500 hover:-translate-y-1">
-                  <div className="flex items-start justify-between">
-                    <div className="relative inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-brand-soft border border-primary/30">
-                      <Icon className="h-6 w-6 text-primary" />
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-brand opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+              <Reveal key={s.title} delay={i * 80} direction="scale">
+                <TiltCard intensity={6} lift={8} className="h-full">
+                  <article className="group glow-border shine relative h-full rounded-3xl bg-surface/60 backdrop-blur p-7 border border-border hover:bg-surface transition-colors duration-500">
+                    <div className="flex items-start justify-between">
+                      <div className="relative inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-gradient-brand-soft border border-primary/30 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-[-6deg]">
+                        <Icon className="h-6 w-6 text-primary transition-transform duration-500 group-hover:scale-110" />
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-brand opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-500" />
+                      </div>
+                      <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-500" />
                     </div>
-                    <ArrowUpRight className="h-5 w-5 text-muted-foreground group-hover:text-primary group-hover:rotate-12 transition-all duration-500" />
-                  </div>
 
-                  <h3 className="mt-6 font-display text-xl font-semibold leading-tight">
-                    {s.title}
-                  </h3>
-                  <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
-                    {s.desc}
-                  </p>
+                    <h3 className="mt-6 font-display text-xl font-semibold leading-tight">
+                      {s.title}
+                    </h3>
+                    <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                      {s.desc}
+                    </p>
 
-                  <div className="mt-6 flex flex-wrap gap-1.5">
-                    {s.tags.map((t) => (
-                      <span
-                        key={t}
-                        className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-background/60 border border-border text-muted-foreground"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+                    <div className="mt-6 flex flex-wrap gap-1.5">
+                      {s.tags.map((t) => (
+                        <span
+                          key={t}
+                          className="text-[10px] uppercase tracking-wider px-2 py-1 rounded-full bg-background/60 border border-border text-muted-foreground transition-colors duration-300 group-hover:border-primary/40 group-hover:text-foreground"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
 
-                  <div className="mt-6 pt-5 border-t border-border flex items-baseline justify-between">
-                    <div>
-                      <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Starting at</div>
-                      <div className="font-display text-xl font-bold text-gradient-brand leading-tight">
-                        {s.from}
+                    <div className="mt-6 pt-5 border-t border-border flex items-baseline justify-between">
+                      <div>
+                        <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Starting at</div>
+                        <div className="font-display text-xl font-bold text-gradient-brand leading-tight">
+                          {s.from}
+                        </div>
+                      </div>
+                      <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
+                        {s.unit}
                       </div>
                     </div>
-                    <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                      {s.unit}
-                    </div>
-                  </div>
-                </article>
+                  </article>
+                </TiltCard>
               </Reveal>
             );
           })}

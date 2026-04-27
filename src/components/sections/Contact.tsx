@@ -83,7 +83,7 @@ const Contact = () => {
     <section id="contact" className="relative py-32 overflow-hidden">
       <div
         aria-hidden
-        className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[50rem] h-[50rem] rounded-full bg-primary/20 blur-[140px]"
+        className="absolute -bottom-40 left-1/2 -translate-x-1/2 w-[50rem] h-[50rem] rounded-full bg-primary/20 blur-[140px] blob-float pulse-glow"
       />
 
       <div className="container grid lg:grid-cols-12 gap-12">
@@ -109,7 +109,7 @@ const Contact = () => {
                 )}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 transition-all duration-500"
+                className="group shine flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-500"
               >
                 <div className="h-12 w-12 rounded-xl bg-[#25D366]/15 border border-[#25D366]/40 flex items-center justify-center">
                   <MessageCircle className="h-5 w-5 text-[#25D366]" />
@@ -123,7 +123,7 @@ const Contact = () => {
 
               <a
                 href="tel:+917359740765"
-                className="group flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 transition-all duration-500"
+                className="group shine flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-500"
               >
                 <div className="h-12 w-12 rounded-xl bg-gradient-brand-soft border border-primary/30 flex items-center justify-center">
                   <Phone className="h-5 w-5 text-primary" />
@@ -137,7 +137,7 @@ const Contact = () => {
 
               <a
                 href="mailto:hiranimanish56@gmail.com"
-                className="group flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 transition-all duration-500"
+                className="group shine flex items-center gap-4 p-5 rounded-2xl glass-card hover:border-primary/50 hover:-translate-y-0.5 transition-all duration-500"
               >
                 <div className="h-12 w-12 rounded-xl bg-gradient-brand-soft border border-primary/30 flex items-center justify-center">
                   <Mail className="h-5 w-5 text-primary" />
@@ -259,7 +259,7 @@ const Contact = () => {
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="group inline-flex items-center gap-3 rounded-full bg-gradient-brand px-8 py-4 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-[1.03] disabled:opacity-60"
+                  className="group shine inline-flex items-center gap-3 rounded-full bg-gradient-brand px-8 py-4 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-[1.03] disabled:opacity-60"
                 >
                   {submitting ? "Opening…" : "Send via WhatsApp"}
                   <Send className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />

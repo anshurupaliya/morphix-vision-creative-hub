@@ -55,7 +55,7 @@ const Navbar = () => {
               <a
                 href={`/#/?to=${l.target}`}
                 onClick={(e) => go(e, l.target)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-300"
+                className="nav-underline text-muted-foreground hover:text-foreground transition-colors duration-300"
               >
                 {l.label}
               </a>
@@ -66,9 +66,9 @@ const Navbar = () => {
         <a
           href="/#/?to=contact"
           onClick={(e) => go(e, "contact")}
-          className="hidden md:inline-flex items-center justify-center rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-105"
+          className="group hidden md:inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-brand px-5 py-2.5 text-sm font-medium text-primary-foreground shadow-glow-soft hover:shadow-glow transition-all duration-500 hover:scale-105 shine relative overflow-hidden"
         >
-          Start a Project
+          <span className="relative z-10">Start a Project</span>
         </a>
       </nav>
     </header>

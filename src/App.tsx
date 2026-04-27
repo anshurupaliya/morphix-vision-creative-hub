@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import CaseStudy from "./pages/CaseStudy.tsx";
 import WhatsAppButton from "./components/WhatsAppButton.tsx";
+import ScrollProgress from "./components/ScrollProgress.tsx";
 
 const queryClient = new QueryClient();
 
@@ -16,6 +17,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <HashRouter>
+        <ScrollProgress />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/case-study/:slug" element={<CaseStudy />} />
